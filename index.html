@@ -1,0 +1,3203 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>思维认知课 ｜ 让孩子和最优秀的年轻大脑一起，学会真正的思考</title>
+    <meta
+      name="description"
+      content="清北藤校导师团，为 10–16 岁青少年打造的一套系统思维认知课程。5 大模块，76 节课。"
+    />
+    <style>
+      /* ============================================================
+   TOKENS
+   ============================================================ */
+      :root {
+        /* color — 取自导师卡：暖黑底 + 多级金
+     括号内为 WCAG 对比度（对页底 --paper） */
+        --ink: #e6dcc6; /* 奶金，正文        14.5 : 1 */
+        --ink-60: #b59b6b; /* 古铜金，次级      7.4 : 1  */
+        --ink-40: #927d4f; /* 暗铜，占位/禁用   4.7 : 1  */
+        --paper: #0b0a09; /* 暖黑，页底              */
+        --card: #14120f; /* 抬升一档的暖黑，卡片    */
+        --gold-panel: #e9c070; /* 与全站「预约体验课」按钮统一 */
+        --rule: #241e15;
+        --rule-strong: #3d3322;
+        --accent: #e9c070; /* 标志金            11.5 : 1 */
+        --accent-press: #f7d98f; /* 亮金，hover/按下  14.4 : 1 */
+        --placeholder: #241e16;
+
+        /* type */
+        --font:
+          Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+        /* space */
+        --s1: 4px;
+        --s2: 8px;
+        --s3: 12px;
+        --s4: 16px;
+        --s5: 20px;
+        --s6: 24px;
+        --s7: 32px;
+        --s8: 40px;
+        --s9: 48px;
+        --s10: 60px;
+        --s11: 80px;
+        --s12: 160px;
+
+        /* layout */
+        --container: 1200px;
+        --shell: 1440px;
+        --measure: 810px;
+        --pad: 40px;
+        --gutter: 24px;
+      }
+
+      /* ============================================================
+   RESET
+   ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.8;
+        /* 深底浅字下不做 antialiased：它会把中文笔画抽细，反而更糊 */
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      figure,
+      blockquote {
+        margin: 0;
+      }
+      ul,
+      ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      /* ============================================================
+   PRIMITIVES
+   ============================================================ */
+      .container {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+      /* Hero 保持聚焦宽度；后续内容在桌面端自适应铺满屏幕。 */
+      main > .section > .container {
+        width: 100%;
+        max-width: var(--shell);
+      }
+      .grid12 {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gutter);
+      }
+      .cards {
+        display: grid;
+        gap: var(--gutter);
+      }
+      .cards-4 {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+      }
+
+      .label {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-60);
+      }
+      .num {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .rule {
+        height: 1px;
+        background: var(--rule);
+        border: 0;
+        margin: 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+      }
+      .badge--tbd {
+        color: var(--ink-40);
+        border-color: var(--rule-strong);
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--accent);
+      }
+      .cta .arw {
+        transition: transform 0.2s ease-out;
+      }
+      .cta:hover .arw {
+        transform: translateX(4px);
+      }
+      .cta--down:hover .arw {
+        transform: translateY(4px);
+      }
+
+      /* section scaffolding */
+      .section {
+        padding: var(--s12) 0;
+      }
+      .section__head {
+        margin-bottom: var(--s11);
+      }
+      .section__meta {
+        display: flex;
+        align-items: baseline;
+        gap: var(--s4);
+        padding-bottom: var(--s3);
+        border-bottom: 1px solid var(--rule-strong);
+      }
+      .section__title {
+        margin-top: var(--s8);
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+      }
+      .section__sub {
+        margin-top: var(--s4);
+        color: var(--ink-60);
+        max-width: var(--measure);
+      }
+
+      /* ============================================================
+   NAV
+   ============================================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        height: 64px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav__in {
+        width: 100%;
+        max-width: var(--shell);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s6);
+      }
+      .nav__brand {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .nav__brand span {
+        color: var(--ink-40);
+        margin-left: var(--s2);
+      }
+      .nav__list {
+        display: flex;
+        align-items: center;
+        gap: var(--s1);
+      }
+      .nav__link {
+        display: block;
+        padding: 6px 12px;
+        font-size: 13px;
+        color: var(--ink-60);
+        border: 1px solid transparent;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .nav__link:hover {
+        color: var(--ink);
+      }
+      .nav__link.is-active {
+        color: var(--ink);
+        border-color: var(--rule-strong);
+      }
+      .nav__cta {
+        padding: 7px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--card);
+        background: var(--accent);
+        white-space: nowrap;
+      }
+      .nav__cta:hover {
+        background: var(--accent-press);
+      }
+
+      /* ============================================================
+   01 LEAD — 居中标题 + 导师群像弧列 + 三栏要点
+   ============================================================ */
+      .lead {
+        padding-top: calc(64px + var(--s11));
+        padding-bottom: var(--s12);
+        overflow: hidden;
+      }
+      .lead__head {
+        max-width: 840px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .lead__h1 {
+        display: flex;
+        flex-direction: column;
+      }
+      /* 首屏两行统一使用黑体，通过字号与字重建立层级。 */
+      .lead__serif {
+        font-family: var(--font);
+        font-size: 52px;
+        font-weight: 400;
+        line-height: 1.3;
+      }
+      .lead__sans {
+        font-size: 56px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+      }
+      .lead__highlight {
+        color: var(--accent);
+        text-shadow: 0 0 28px rgba(233, 192, 112, 0.14);
+      }
+      .lead__sub {
+        margin-top: var(--s6);
+        color: var(--ink-60);
+      }
+      .lead__act {
+        margin-top: var(--s7);
+      }
+
+      /* 深色方角按钮 + 圆形箭头徽标 */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s4);
+        padding: 8px 8px 8px var(--s6);
+        background: var(--accent);
+        color: var(--paper);
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .btn:hover {
+        background: var(--accent-press);
+      }
+      .btn__ico {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        flex: none;
+        border-radius: 50%;
+        background: var(--paper);
+        color: var(--accent);
+        font-style: normal;
+        font-size: 14px;
+        transition: transform 0.2s ease-out;
+      }
+      .btn:hover .btn__ico {
+        transform: translateX(3px);
+      }
+
+      /* 弧列：中央卡片更小、更低；两侧逐渐放大、抬高并向内转，形成内凹人物墙。 */
+      .fan {
+        position: relative;
+        margin-top: -40px;
+        overflow: hidden;
+        --fanw: 210px;
+        perspective: 1400px;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 7%,
+          #000 93%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 7%,
+          #000 93%,
+          transparent 100%
+        );
+      }
+      .fan__row {
+        position: relative;
+        height: 400px;
+      }
+      .fan__card {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: var(--fanw);
+        transform-origin: 50% 0;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+      }
+      .fan__card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 941/1672;
+        object-fit: cover;
+        border: 1px solid var(--rule-strong);
+        border-radius: 6px;
+        box-shadow: 0 22px 56px rgba(0, 0, 0, 0.42);
+      }
+      /* 手机 / reduced-motion：撤掉 3D 与自动漂移，改成用户自己横滑 */
+      .fan--static {
+        overflow-x: auto;
+        perspective: none;
+        -webkit-mask-image: none;
+        mask-image: none;
+        scrollbar-width: none;
+        scroll-snap-type: x proximity;
+      }
+      .fan--static::-webkit-scrollbar {
+        display: none;
+      }
+      .fan--static .fan__row {
+        display: flex;
+        gap: 12px;
+        width: max-content;
+        height: auto;
+        padding: 0 var(--pad);
+      }
+      .fan--static .fan__card {
+        position: static;
+        top: auto;
+        transform: none !important;
+        opacity: 1 !important;
+        flex: none;
+        scroll-snap-align: center;
+      }
+
+      /* 三栏要点 */
+      .lead__features-wrap {
+        width: 100%;
+        max-width: var(--shell);
+      }
+      .lead__cols {
+        margin-top: var(--s10);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .lead__cols > div {
+        min-width: 0;
+        padding: 0 var(--s5);
+        text-align: center;
+      }
+      .lead__cols > div + div {
+        border-left: 1px solid var(--rule-strong);
+      }
+      .lead__cols h2 {
+        font-size: clamp(20px, 1.4vw, 25px);
+        font-weight: 650;
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+        text-shadow: 0 0 24px rgba(233, 192, 112, 0.16);
+      }
+      .lead__cols p {
+        max-width: none;
+        margin: var(--s4) auto 0;
+        font-size: clamp(14px, 0.95vw, 17px);
+        font-weight: 450;
+        line-height: 1.65;
+        color: var(--accent);
+        white-space: nowrap;
+      }
+
+      /* ============================================================
+   02 ABOUT
+   ============================================================ */
+      #about {
+        position: relative;
+        overflow: hidden;
+      }
+      #about::before {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        top: 12%;
+        right: -180px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(233, 192, 112, 0.09) 0,
+          rgba(233, 192, 112, 0.025) 42%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .about__label {
+        grid-column: 1 / 5;
+        position: relative;
+        padding-right: var(--s7);
+      }
+      .about__label .section__title {
+        max-width: 4em;
+        margin-top: var(--s10);
+        font-size: clamp(52px, 5vw, 78px);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+      .about__eyebrow {
+        display: block;
+        margin-top: var(--s5);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-40);
+      }
+      .about__body {
+        grid-column: 6 / 13;
+        max-width: none;
+        padding-top: calc(var(--s10) + 34px);
+      }
+      .about__story {
+        counter-reset: about-step;
+      }
+      .about__story p {
+        counter-increment: about-step;
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: var(--s5);
+        align-items: baseline;
+        padding: var(--s5) var(--s4);
+        color: rgba(230, 220, 198, 0.74);
+        transition:
+          color 280ms ease,
+          background-color 280ms ease,
+          transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .about__story p::before {
+        content: "0" counter(about-step);
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+      }
+      .about__story p:nth-child(even) {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.018),
+          transparent 76%
+        );
+      }
+      .about__story p:hover {
+        color: var(--ink);
+        background: linear-gradient(
+          90deg,
+          rgba(233, 192, 112, 0.07),
+          transparent 76%
+        );
+        transform: translateX(8px);
+      }
+      .about__story strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .about__copy {
+        min-width: 0;
+      }
+      .about__kicker {
+        grid-column: 1 / -1;
+        position: relative;
+        margin-top: var(--s9);
+        padding: var(--s7) var(--s8);
+        border: 0;
+        background:
+          linear-gradient(125deg, rgba(233, 192, 112, 0.12), transparent 52%),
+          rgba(20, 18, 15, 0.72);
+        box-shadow: none;
+        font-size: clamp(24px, 2vw, 34px);
+        font-weight: 520;
+        line-height: 1.28;
+        letter-spacing: -0.035em;
+        overflow: hidden;
+      }
+      .about__kicker::before {
+        content: "“";
+        position: absolute;
+        top: -30px;
+        right: 22px;
+        font-family: Georgia, serif;
+        font-size: 180px;
+        line-height: 1;
+        color: rgba(233, 192, 112, 0.07);
+      }
+      .about__kicker span {
+        position: relative;
+        color: var(--accent);
+        text-shadow: 0 0 28px rgba(233, 192, 112, 0.14);
+      }
+      .about__belief {
+        position: relative;
+      }
+      .about__belief--vision {
+        max-width: none;
+        margin-top: var(--s3);
+        font-size: 1em;
+        font-weight: 520;
+        line-height: 1.28;
+        letter-spacing: -0.035em;
+        color: var(--ink);
+      }
+      .js .about__body.rv.in .about__story p {
+        animation: about-rise 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .js .about__body.rv.in .about__story p:nth-child(2) {
+        animation-delay: 80ms;
+      }
+      .js .about__body.rv.in .about__story p:nth-child(3) {
+        animation-delay: 160ms;
+      }
+      .js .about__body.rv.in .about__story p:nth-child(4) {
+        animation-delay: 240ms;
+      }
+      .js .about__body.rv.in .about__story p:nth-child(5) {
+        animation-delay: 320ms;
+      }
+      @keyframes about-rise {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ============================================================
+   03 FACULTY
+   ============================================================ */
+      #faculty .section__head {
+        margin-bottom: var(--s8);
+      }
+      .faculty__positioning {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: clamp(32px, 4vw, 64px);
+        align-items: center;
+      }
+      .faculty__lead {
+        max-width: 34em;
+        font-size: clamp(18px, 1.35vw, 22px);
+        font-weight: 480;
+        line-height: 1.65;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+      }
+      .faculty__lead strong {
+        color: var(--accent);
+        font-weight: 620;
+      }
+      .faculty__slogan {
+        position: relative;
+        padding-left: var(--s6);
+        font-size: clamp(15px, 1.05vw, 17px);
+        line-height: 1.75;
+        color: var(--ink-60);
+      }
+      .faculty__slogan::before {
+        content: "“";
+        position: absolute;
+        top: -18px;
+        left: 0;
+        font-family: Georgia, serif;
+        font-size: 48px;
+        line-height: 1;
+        color: rgba(233, 192, 112, 0.32);
+      }
+      .faculty__standards {
+        margin-top: var(--s10);
+        padding: var(--s7);
+        background:
+          radial-gradient(
+            circle at 0 0,
+            rgba(233, 192, 112, 0.1),
+            transparent 38%
+          ),
+          rgba(20, 18, 15, 0.58);
+      }
+      .faculty__standards-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--s6);
+        margin-bottom: var(--s7);
+      }
+      .faculty__standards-title {
+        font-size: clamp(19px, 1.4vw, 22px);
+        font-weight: 560;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+      }
+      .faculty__ratio {
+        font-size: clamp(17px, 1.25vw, 20px);
+        font-weight: 520;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+      .faculty__ratio strong {
+        margin-left: var(--s2);
+        color: var(--accent);
+        font: inherit;
+        font-weight: 650;
+      }
+      .faculty__criteria {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: clamp(16px, 2vw, 32px);
+      }
+      .faculty__criteria li {
+        min-width: 0;
+        transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .faculty__criteria li:hover {
+        transform: translateY(-4px);
+      }
+      .faculty__criteria-num {
+        display: block;
+        margin-bottom: var(--s3);
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+      }
+      .faculty__criteria p {
+        font-size: clamp(14px, 1vw, 16px);
+        line-height: 1.65;
+        color: var(--ink);
+      }
+      /* 导师卡本身就是一张完整海报（姓名 / 履历 / 信条都在图里），
+   所以这里直接整张呈现，不再另排一遍文字。文字版进 .sr 供读屏与搜索使用。 */
+      .mentor {
+        flex: none;
+      }
+      .mentor__poster {
+        display: block;
+        width: 100%;
+        aspect-ratio: 941/1672;
+        object-fit: cover;
+        border: 1px solid var(--rule-strong);
+      }
+      /* 仅供读屏 / SEO，不可见但可被读取 */
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* 慢速轮播：一屏三张，12 张原件 + 12 张克隆件首尾相接做无缝循环。
+   位移量 = 12 × (卡宽 + 间距)，与 --cardw 联动，换断点也不会错位。 */
+      .roll {
+        overflow: hidden;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        padding: 42px 0 38px;
+        --cardw: 357px;
+        --dur: 164s;
+      }
+      .roll__track {
+        position: relative;
+        left: 50%;
+        display: flex;
+        align-items: stretch;
+        gap: var(--gutter);
+        width: max-content;
+        animation: roll var(--dur) linear infinite both;
+        animation-play-state: paused;
+      }
+      .roll .mentor {
+        width: var(--cardw);
+        flex: none;
+        transition:
+          transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 420ms ease;
+        will-change: transform;
+      }
+      .roll .mentor:hover {
+        position: relative;
+        z-index: 2;
+        transform: translateY(-14px) scale(1.018);
+        filter: brightness(1.1);
+      }
+      .roll .mentor:hover .mentor__poster {
+        border-color: rgba(233, 192, 112, 0.78);
+        box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+      }
+      /* 悬停或键盘聚焦时暂停，否则读不完一张卡就滑走了 */
+      .roll.is-visible .roll__track {
+        animation-play-state: running;
+      }
+      .roll.is-visible:hover .roll__track,
+      .roll.is-visible:focus-within .roll__track {
+        animation-play-state: paused;
+      }
+      @keyframes roll {
+        from {
+          transform: translateX(
+            calc(-6 * (var(--cardw) + var(--gutter)) - var(--cardw) / 2)
+          );
+        }
+        to {
+          transform: translateX(
+            calc(-18 * (var(--cardw) + var(--gutter)) - var(--cardw) / 2)
+          );
+        }
+      }
+      .roll__hint {
+        margin-top: var(--s5);
+        text-align: center;
+      }
+
+      /* ============================================================
+   04 CURRICULUM
+   ============================================================ */
+      .spec {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        border: 1px solid var(--rule-strong);
+        margin-bottom: 0;
+        background: var(--rule-strong);
+        overflow: hidden;
+      }
+      .spec div {
+        position: relative;
+        min-height: 210px;
+        padding: clamp(28px, 3vw, 52px);
+        background:
+          radial-gradient(
+            circle at 12% 12%,
+            rgba(233, 192, 112, 0.12),
+            transparent 44%
+          ),
+          var(--paper);
+        transition:
+          transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color 0.38s ease,
+          box-shadow 0.38s ease;
+      }
+      .spec div::after {
+        content: "";
+        position: absolute;
+        right: clamp(20px, 2.5vw, 42px);
+        bottom: clamp(20px, 2.5vw, 34px);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 7px rgba(233, 192, 112, 0.08);
+        opacity: 0.75;
+        transition:
+          transform 0.38s ease,
+          box-shadow 0.38s ease;
+      }
+      .spec div:hover {
+        z-index: 1;
+        transform: translateY(-6px);
+        background-color: var(--card);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      }
+      .spec div:hover::after {
+        transform: scale(1.25);
+        box-shadow:
+          0 0 0 10px rgba(233, 192, 112, 0.1),
+          0 0 28px rgba(233, 192, 112, 0.3);
+      }
+      .spec b {
+        display: block;
+        font-size: clamp(72px, 7vw, 118px);
+        font-weight: 650;
+        line-height: 0.84;
+        letter-spacing: -0.065em;
+        color: var(--accent);
+        text-shadow: 0 0 34px rgba(233, 192, 112, 0.16);
+        font-variant-numeric: tabular-nums;
+      }
+      .spec span {
+        display: block;
+        margin-top: var(--s5);
+        font-size: clamp(13px, 1vw, 16px);
+        font-weight: 550;
+        letter-spacing: 0.12em;
+        color: var(--ink);
+      }
+      .spec-tags {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--s3);
+        margin: var(--s4) 0 var(--s6);
+      }
+      .spec-tag {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--s4);
+        min-height: 62px;
+        padding: var(--s4) var(--s5);
+        border: 1px solid rgba(233, 192, 112, 0.38);
+        background: linear-gradient(
+          110deg,
+          rgba(233, 192, 112, 0.09),
+          rgba(20, 18, 15, 0.35)
+        );
+        color: var(--ink);
+        font-size: clamp(13px, 1vw, 16px);
+        font-weight: 560;
+        letter-spacing: 0.035em;
+        transition:
+          border-color 240ms ease,
+          background-color 240ms ease,
+          transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .spec-tag::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        flex: none;
+        border: 1px solid var(--accent);
+        transform: rotate(45deg);
+        box-shadow: 0 0 14px rgba(233, 192, 112, 0.26);
+      }
+      .spec-tag:hover {
+        border-color: var(--accent);
+        background-color: rgba(233, 192, 112, 0.06);
+        transform: translateY(-3px);
+      }
+
+      .quality {
+        display: block;
+        margin-top: clamp(56px, 6vw, 96px);
+        margin-bottom: var(--s11);
+      }
+      .quality__title {
+        margin-bottom: var(--s5);
+        font-size: clamp(22px, 1.8vw, 30px);
+        font-weight: 560;
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+      .quality__steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--s3);
+      }
+      .quality__step {
+        position: relative;
+        display: flex;
+        min-height: 190px;
+        padding: var(--s5);
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        border: 1px solid rgba(233, 192, 112, 0.34);
+        background: linear-gradient(
+          145deg,
+          rgba(233, 192, 112, 0.12),
+          rgba(20, 18, 15, 0.7) 62%
+        );
+        transition:
+          transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          border-color 240ms ease,
+          background-color 240ms ease;
+      }
+      .quality__step::after {
+        content: "";
+        position: absolute;
+        right: var(--s5);
+        bottom: var(--s5);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 9px rgba(233, 192, 112, 0.08);
+      }
+      .quality__step:hover {
+        transform: translateY(-6px);
+        border-color: rgba(233, 192, 112, 0.72);
+        background-color: rgba(233, 192, 112, 0.04);
+      }
+      .quality__num {
+        color: var(--accent);
+        font-size: clamp(38px, 3.4vw, 58px);
+        font-weight: 600;
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+      }
+      .quality__step p {
+        max-width: 11em;
+        padding-right: var(--s5);
+        color: var(--ink);
+        font-size: clamp(16px, 1.2vw, 20px);
+        font-weight: 550;
+        line-height: 1.45;
+        letter-spacing: -0.015em;
+      }
+
+      /* --- 五个模块：全部平铺，滚动时逐个进场，不需要访客主动操作 --- */
+      .mods {
+        display: grid;
+        gap: 20px;
+      }
+      .mod {
+        position: relative;
+        isolation: isolate;
+        border: 1px solid var(--rule-strong);
+        min-height: 620px;
+        padding: clamp(32px, 4vw, 64px);
+        display: grid;
+        grid-template-columns: minmax(260px, 0.8fr) minmax(520px, 1.45fr);
+        gap: var(--s8);
+        align-items: start;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+      }
+      .mod::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(7, 6, 5, 0.82), rgba(7, 6, 5, 0.58)),
+          linear-gradient(0deg, rgba(7, 6, 5, 0.34), rgba(7, 6, 5, 0.34));
+        backdrop-filter: blur(1px);
+      }
+      .mod:nth-child(1) {
+        background-image: url("img/课程01-认识和规划自我.png");
+      }
+      .mod:nth-child(2) {
+        background-image: url("img/课程02-逻辑与辩证思维.png");
+      }
+      .mod:nth-child(3) {
+        background-image: url("img/课程03-创新和创造思维.png");
+      }
+      .mod:nth-child(4) {
+        background-image: url("img/课程04-沟通表达和协作.png");
+      }
+      .mod:nth-child(5) {
+        background-image: url("img/课程05-AI时代的人机素养.png");
+      }
+      .mod__top {
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+        flex-wrap: wrap;
+      }
+      .mod__top .badge {
+        margin-top: 0;
+      }
+      .mod__intro {
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-right: var(--s7);
+        border-right: 1px solid rgba(233, 192, 112, 0.24);
+      }
+      .mod__name {
+        max-width: none;
+        margin-top: var(--s8);
+        font-size: clamp(42px, 4vw, 66px);
+        font-weight: 620;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+      .mod__name-line {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        white-space: nowrap;
+      }
+      .mod__claim {
+        max-width: 19em;
+        margin-top: var(--s6);
+        font-size: 17px;
+        line-height: 1.7;
+        color: var(--accent);
+      }
+      .mod__catalog-note {
+        margin-top: auto;
+        padding-top: var(--s8);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-40);
+      }
+      .mod__qs {
+        border-top: 1px solid var(--rule);
+        counter-reset: lesson;
+      }
+      .mod__qs li {
+        counter-increment: lesson;
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: var(--s4);
+        align-items: baseline;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: clamp(15px, 1.15vw, 18px);
+        line-height: 1.5;
+        transition:
+          color 240ms ease,
+          transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .mod__qs li::before {
+        content: "0" counter(lesson);
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 650;
+        letter-spacing: 0.08em;
+        flex: none;
+      }
+      .mod__qs li:hover {
+        color: var(--accent-press);
+        transform: translateX(6px);
+      }
+      .mod__qs .mod__more-row {
+        padding-top: 9px;
+        padding-bottom: 12px;
+        color: var(--accent);
+      }
+      .mod__more-row span {
+        font-size: 28px;
+        font-weight: 620;
+        line-height: 0.7;
+        letter-spacing: 0.12em;
+        opacity: 0.76;
+      }
+      .mod__gain {
+        margin-top: var(--s5);
+        background: rgba(20, 18, 15, 0.84);
+        backdrop-filter: blur(10px);
+        padding: var(--s5) var(--s6);
+      }
+      .mod__gain p {
+        margin-top: var(--s3);
+      }
+      .mod__actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s5);
+        margin-top: var(--s5);
+      }
+      .mod__more {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--ink-60);
+      }
+      .mod__consult {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s7);
+        min-width: 150px;
+        padding: 11px 14px;
+        border: 1px solid var(--accent);
+        background: rgba(11, 10, 9, 0.45);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        transition:
+          background-color 220ms ease,
+          color 220ms ease,
+          transform 220ms ease;
+      }
+      .mod__consult:hover {
+        background: var(--accent);
+        color: var(--paper);
+        transform: translateY(-2px);
+      }
+
+      /* ============================================================
+   05 OUTCOMES
+   ============================================================ */
+      #outcomes .section__title {
+        font-size: clamp(32px, 3vw, 48px);
+      }
+      .outcomes__intro {
+        max-width: 680px;
+        margin-top: var(--s4);
+        color: var(--ink-60);
+      }
+      .outcomes {
+        display: grid;
+        gap: clamp(24px, 3vw, 48px);
+      }
+      .outcome {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.9fr) minmax(500px, 1.1fr);
+        min-height: 420px;
+        border: 1px solid var(--rule-strong);
+        background: var(--card);
+        overflow: hidden;
+      }
+      .outcome:nth-child(even) .outcome__visual {
+        order: 2;
+      }
+      .outcome__visual {
+        position: relative;
+        min-height: 420px;
+        overflow: hidden;
+      }
+      .outcome__visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 45%, var(--card) 100%);
+        pointer-events: none;
+      }
+      .outcome:nth-child(even) .outcome__visual::after {
+        background: linear-gradient(270deg, transparent 45%, var(--card) 100%);
+      }
+      .outcome__visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.82) brightness(0.72);
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .outcome:hover .outcome__visual img {
+        transform: scale(1.035);
+      }
+      .outcome__index {
+        position: absolute;
+        z-index: 2;
+        top: var(--s6);
+        left: var(--s6);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(233, 192, 112, 0.55);
+        background: rgba(11, 10, 9, 0.72);
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .outcome:nth-child(even) .outcome__index {
+        right: var(--s6);
+        left: auto;
+      }
+      .outcome__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(36px, 5vw, 80px);
+      }
+      .outcome__eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .outcome__title {
+        margin-top: var(--s4);
+        font-size: clamp(25px, 2.2vw, 38px);
+        font-weight: 550;
+        line-height: 1.25;
+        letter-spacing: -0.035em;
+      }
+      .outcome__compare {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+        gap: var(--s4);
+        align-items: center;
+        margin-top: var(--s8);
+      }
+      .outcome__state {
+        min-height: 148px;
+        padding: var(--s5);
+        border: 1px solid var(--rule-strong);
+        background: rgba(11, 10, 9, 0.58);
+      }
+      .outcome__state--after {
+        border-color: rgba(233, 192, 112, 0.5);
+        background: rgba(45, 35, 18, 0.42);
+      }
+      .outcome__label {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.1em;
+        color: var(--ink-40);
+      }
+      .outcome__state--after .outcome__label {
+        color: var(--accent);
+      }
+      .outcome__state p {
+        margin-top: var(--s4);
+        font-size: clamp(16px, 1.15vw, 20px);
+        line-height: 1.55;
+      }
+      .outcome__arrow {
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--paper);
+        font-size: 25px;
+        box-shadow: 0 0 36px rgba(233, 192, 112, 0.2);
+      }
+      .outcomes__sixth {
+        display: grid;
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: var(--s5);
+        align-items: center;
+        padding: var(--s6) clamp(24px, 4vw, 64px);
+        background: linear-gradient(
+          105deg,
+          rgba(233, 192, 112, 0.12),
+          rgba(20, 18, 15, 0.5)
+        );
+      }
+      .outcomes__sixth-num {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.1em;
+      }
+      .outcomes__sixth p {
+        font-size: clamp(20px, 2vw, 30px);
+        line-height: 1.45;
+        letter-spacing: -0.025em;
+      }
+      .outcomes__closing {
+        margin-top: clamp(40px, 6vw, 88px);
+        max-width: 1040px;
+        padding-left: var(--s6);
+        border-left: 3px solid var(--accent);
+        font-size: clamp(22px, 2.4vw, 38px);
+        line-height: 1.45;
+        letter-spacing: -0.035em;
+      }
+      .outcomes__closing span {
+        display: block;
+        margin-bottom: var(--s3);
+        color: var(--ink-40);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+      }
+      .outcomes__closing strong {
+        color: var(--accent);
+        font-weight: 560;
+      }
+      .outcomes__promise {
+        display: block;
+        margin-top: var(--s5);
+        padding-top: var(--s5);
+        border-top: 1px solid var(--rule-strong);
+        color: var(--ink);
+        font-size: clamp(24px, 2.7vw, 42px);
+        font-style: normal;
+        font-weight: 520;
+        line-height: 1.4;
+      }
+
+      /* ============================================================
+   06 CONTACT — 全站唯一的金色反色面板
+   深色站里靠「金底黑字」制造转折，等同于原先浅色站里的「黑底白字」
+   ============================================================ */
+      .contact {
+        background: var(--gold-panel);
+        color: var(--paper);
+        --on-gold: #4a3c22; /* 金底上的次级文字 */
+        --gold-rule: #b2914f; /* 金底上的分隔线   */
+      }
+      .contact .section__meta {
+        border-bottom-color: var(--gold-rule);
+      }
+      .contact .num {
+        color: var(--paper);
+      }
+      .contact .label {
+        color: var(--on-gold);
+      }
+      .contact .section__sub {
+        color: var(--on-gold);
+      }
+      .contact__l {
+        grid-column: 1 / 7;
+      }
+      .contact__r {
+        grid-column: 8 / 13;
+      }
+      .opts {
+        margin-top: var(--s8);
+        border-top: 1px solid var(--gold-rule);
+      }
+      .opts a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s4);
+        padding: var(--s5) 0;
+        border-bottom: 1px solid var(--gold-rule);
+        font-size: 20px;
+        font-weight: 450;
+        letter-spacing: -0.02em;
+      }
+      .opts a:hover {
+        color: var(--on-gold);
+      }
+      .opts .arw {
+        color: var(--paper);
+        transition: transform 0.2s ease-out;
+      }
+      .opts a:hover .arw {
+        transform: translateX(4px);
+      }
+
+      .info {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: var(--s8);
+      }
+      .info th,
+      .info td {
+        text-align: left;
+        padding: var(--s4) 0;
+        border-bottom: 1px solid var(--gold-rule);
+        vertical-align: baseline;
+      }
+      .info th {
+        width: 96px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--on-gold);
+      }
+      .info .badge--tbd {
+        color: var(--on-gold);
+        border-color: var(--gold-rule);
+      }
+
+      /* ============================================================
+   08 FOOTER
+   ============================================================ */
+      .foot {
+        border-top: 1px solid var(--rule-strong);
+        padding: var(--s9) 0;
+      }
+      .foot__in {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: var(--s6);
+        flex-wrap: wrap;
+      }
+      .foot p {
+        font-size: 20px;
+        font-weight: 450;
+        letter-spacing: -0.02em;
+      }
+      .foot small {
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        color: var(--ink-60);
+      }
+
+      /* ============================================================
+   MOTION
+   ============================================================ */
+      .js .rv {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      .js .rv.in {
+        opacity: 1;
+        transform: none;
+        transition:
+          opacity 0.2s ease-out,
+          transform 0.2s ease-out;
+      }
+
+      /* ============================================================
+   RESPONSIVE
+   ============================================================ */
+      @media (max-width: 1199px) {
+        :root {
+          --pad: 24px;
+        }
+        .lead__serif {
+          font-size: 42px;
+        }
+        .lead__sans {
+          font-size: 46px;
+        }
+        .section__title,
+        .spec b {
+          font-size: 32px;
+        }
+        #outcomes .section__title {
+          font-size: 28px;
+        }
+        .out p {
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 1023px) {
+        .cards-4 {
+          grid-template-columns: repeat(2, minmax(200px, 1fr));
+        }
+        .curr {
+          grid-template-columns: 1fr;
+          gap: var(--s10);
+        }
+        .nav__list {
+          display: none;
+        }
+        .lead__serif {
+          font-size: 34px;
+        }
+        .lead__sans {
+          font-size: 37px;
+        }
+        .fan {
+          --fanw: 176px;
+        }
+        .lead__cols > div {
+          padding: 0 var(--s5);
+        }
+        .roll {
+          --cardw: 300px;
+        }
+        .faculty__positioning {
+          grid-template-columns: 1fr;
+          gap: var(--s7);
+        }
+        .faculty__slogan {
+          max-width: 42em;
+        }
+        .faculty__standards {
+          padding: var(--s6);
+        }
+        .faculty__criteria {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .about__label {
+          grid-column: 1 / 5;
+          padding-right: var(--s7);
+        }
+        .about__body {
+          grid-column: 5 / 13;
+          padding-top: calc(var(--s10) + 34px);
+        }
+        .about__kicker {
+          padding: var(--s6) var(--s7);
+        }
+      }
+
+      @media (max-width: 767px) {
+        :root {
+          --pad: 20px;
+          --s12: 80px;
+          --s11: 48px;
+        }
+        .grid12 {
+          grid-template-columns: 1fr;
+          gap: var(--s8);
+        }
+        .about__label,
+        .about__body,
+        .contact__l,
+        .contact__r {
+          grid-column: auto;
+        }
+        .about__label {
+          padding-right: 0;
+        }
+        .about__label .section__title {
+          max-width: none;
+          margin-top: var(--s7);
+          font-size: 42px;
+        }
+        .about__story p {
+          grid-template-columns: 38px minmax(0, 1fr);
+          gap: var(--s3);
+          padding: var(--s5) 0;
+        }
+        .about__body {
+          padding-top: 0;
+        }
+        .about__story p:hover {
+          transform: none;
+        }
+        .about__kicker {
+          margin-top: var(--s7);
+          padding: var(--s6) var(--s5);
+          font-size: 22px;
+        }
+        .cards-4 {
+          grid-template-columns: 1fr;
+        }
+        .lead__serif {
+          font-size: 27px;
+        }
+        .lead__sans {
+          font-size: 29px;
+        }
+        /* 手机上不做 3D：弧列退化为可横滑的等高图条 */
+        .fan {
+          perspective: none;
+          margin-top: var(--s8);
+          overflow-x: auto;
+        }
+        .fan__row {
+          gap: 8px;
+          padding: 0 var(--pad);
+        }
+        .fan__card {
+          transform: none;
+          width: min(68vw, 260px);
+          height: auto;
+        }
+        /* 手机上海报若还按 264px 走，卡内文字只有 7px，等于白放。
+     改成近乎整屏一张，牺牲「一屏三张」换可读性。 */
+        .roll {
+          --cardw: 74vw;
+          --dur: 150s;
+        }
+        .faculty__lead {
+          font-size: 18px;
+        }
+        .faculty__slogan {
+          padding-left: var(--s6);
+        }
+        .faculty__standards {
+          gap: var(--s7);
+          margin-top: var(--s9);
+          padding: var(--s6) var(--s5);
+        }
+        .faculty__standards-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: var(--s2);
+          margin-bottom: var(--s6);
+        }
+        .faculty__criteria {
+          grid-template-columns: 1fr;
+          gap: var(--s5);
+        }
+        .lead__cols {
+          grid-template-columns: 1fr;
+        }
+        .lead__cols > div {
+          padding: 0;
+          text-align: left;
+        }
+        .lead__cols > div + div {
+          border-left: 0;
+          border-top: 1px solid var(--rule);
+          margin-top: var(--s6);
+          padding-top: var(--s6);
+        }
+        .section__title,
+        .about__kicker {
+          font-size: 28px;
+        }
+        #outcomes .section__title {
+          font-size: 24px;
+        }
+        .outcome {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .outcome:nth-child(even) .outcome__visual {
+          order: 0;
+        }
+        .outcome__visual {
+          min-height: 260px;
+        }
+        .outcome__visual::after,
+        .outcome:nth-child(even) .outcome__visual::after {
+          background: linear-gradient(0deg, var(--card) 0, transparent 55%);
+        }
+        .outcome__body {
+          padding: var(--s7) var(--s5) var(--s8);
+        }
+        .outcome__compare {
+          grid-template-columns: 1fr;
+          gap: var(--s3);
+          margin-top: var(--s6);
+        }
+        .outcome__state {
+          min-height: 0;
+        }
+        .outcome__arrow {
+          width: 44px;
+          height: 44px;
+          transform: rotate(90deg);
+        }
+        .spec {
+          grid-template-columns: 1fr;
+        }
+        .spec-tags {
+          grid-template-columns: 1fr;
+          gap: var(--s2);
+          margin-top: var(--s3);
+        }
+        .quality {
+          grid-template-columns: 1fr;
+          gap: var(--s5);
+          padding: var(--s5);
+        }
+        .quality__steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: var(--s4);
+        }
+        .spec-tag {
+          min-height: 54px;
+          padding: var(--s3) var(--s4);
+        }
+        .spec div {
+          min-height: 150px;
+          padding: var(--s6);
+        }
+        .spec div + div {
+          border-left: 0;
+          border-top: 1px solid var(--rule);
+        }
+        .spec b {
+          font-size: clamp(58px, 20vw, 76px);
+        }
+        .outcomes__sixth {
+          grid-template-columns: 40px minmax(0, 1fr);
+          padding: var(--s5);
+        }
+        .outcomes__closing {
+          margin-top: var(--s8);
+          padding-left: var(--s4);
+        }
+        .opts a {
+          font-size: 17px;
+        }
+
+        /* 模块在手机上左右栏合并成单栏 */
+        .mods {
+          gap: 40px;
+        }
+        .mod {
+          grid-template-columns: 1fr;
+          gap: var(--s6);
+          padding: var(--s6);
+          min-height: 0;
+        }
+        .mod__intro {
+          min-height: 0;
+          padding-right: 0;
+          padding-bottom: var(--s6);
+          border-right: 0;
+          border-bottom: 1px solid rgba(233, 192, 112, 0.24);
+        }
+        .mod__name {
+          max-width: none;
+          margin-top: var(--s6);
+          font-size: 40px;
+        }
+        .mod__catalog-note {
+          margin-top: var(--s7);
+        }
+        .mod__qs li {
+          grid-template-columns: 28px minmax(0, 1fr);
+          gap: var(--s3);
+          font-size: 15px;
+        }
+        .mod__qs li:hover {
+          transform: none;
+        }
+        .mod__actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+        .mod__consult {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+        .js .rv {
+          opacity: 1;
+          transform: none;
+        }
+        /* 上面那条全局规则会把轮播直接快进到末帧，必须单独摘出来：
+     停掉动画，改成用户自己横滑 */
+        .roll__track {
+          left: 0;
+          animation: none !important;
+          transform: none !important;
+        }
+        .roll {
+          overflow-x: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.documentElement.className += " js";
+    </script>
+
+    <!-- ══════════════════ NAV ══════════════════ -->
+    <header class="nav">
+      <div class="nav__in">
+        <a class="nav__brand" href="#top">思维认知课 <span>COGNITION</span></a>
+        <nav>
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#about">团队</a></li>
+            <li><a class="nav__link" href="#faculty">导师</a></li>
+            <li><a class="nav__link" href="#curriculum">课程</a></li>
+            <li><a class="nav__link" href="#outcomes">变化</a></li>
+            <li><a class="nav__link" href="#contact">联系</a></li>
+          </ul>
+        </nav>
+        <a class="nav__cta" href="#contact">预约体验课</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ══════════════════ 01 LEAD ══════════════════ -->
+      <section class="lead">
+        <div class="container">
+          <div class="lead__head rv">
+            <h1 class="lead__h1">
+              <span class="lead__serif"
+                >让孩子和<span class="lead__highlight">最优秀的年轻大脑</span
+                >一起，</span
+              >
+              <span class="lead__sans"
+                >学会<span class="lead__highlight">真正的思考</span></span
+              >
+            </h1>
+            <p class="lead__sub">
+              20–30
+              岁清北藤校多元型青年导师，以<strong>近龄榜样陪伴、PBL研讨</strong>和<strong>系统思维课程</strong>，<br />
+              帮助 10–16 岁青少年学会AI时代的思考、表达、选择与行动
+            </p>
+            <p class="lead__act">
+              <a class="btn" href="#contact"
+                >预约体验课 <i class="btn__ico">→</i></a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- 导师群像弧列 -->
+        <div class="fan" id="fan">
+          <ul class="fan__row" aria-label="导师团">
+            <li class="fan__card">
+              <img
+                src="img/01 韩瑜.jpg"
+                alt="韩瑜 HAN YU — 北京创域认知创始人 / CEO"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/03 王梓豪.jpg"
+                alt="王梓豪 OWEN WANG — 哈佛大学教育学院硕士"
+              />
+            </li>
+            <li class="fan__card">
+              <img src="img/06 李策.jpg" alt="李策 LI CE — 清华大学设计博士" />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/02 沈子维.jpg"
+                alt="沈子维 SHEN ZIWEI — 北京大学心理学系博士"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/04 李玥祺.jpg"
+                alt="李玥祺 LI YUEQI — 北京大学物理学博士"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/05 刘童.jpg"
+                alt="刘童 LIU TONG — 清华大学车辆学院硕士"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/09 郝悦翔.jpg"
+                alt="郝悦翔 GABRIEL HAO — 芝加哥大学社会科学硕士"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/07 郭俊熙.jpg"
+                alt="郭俊熙 GUO JUNXI — 清华大学本科、硕士"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/10 朱培荣.jpg"
+                alt="朱培荣 ZHU PEIRONG — 清华大学自动化本科"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/11 姜瑞欣.jpg"
+                alt="姜瑞欣 ESTHER JIANG — 清华大学经管学院本科"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/08 李莹然.jpg"
+                alt="李莹然 Amanda Li — 家庭理财规划师"
+              />
+            </li>
+            <li class="fan__card">
+              <img
+                src="img/12 姚知言.png"
+                alt="姚知言 YAO ZHIYAN — 达特茅斯学院机械工程本科、硕士"
+              />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/01 韩瑜.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/03 王梓豪.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/06 李策.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/02 沈子维.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/04 李玥祺.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/05 刘童.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/09 郝悦翔.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/07 郭俊熙.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/10 朱培荣.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/11 姜瑞欣.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/08 李莹然.jpg" alt="" />
+            </li>
+            <li class="fan__card" aria-hidden="true">
+              <img src="img/12 姚知言.png" alt="" />
+            </li>
+          </ul>
+        </div>
+
+        <div class="container lead__features-wrap">
+          <div class="lead__cols rv">
+            <div>
+              <h2>20-30岁 · 清北藤校导师团</h2>
+              <p>教的不只是知识，更是亲身验证过的思维方式</p>
+            </div>
+            <div>
+              <h2>5 大模块 · 76 节 PBL 研讨课</h2>
+              <p>学术理论验证，严谨、扎实、可量化</p>
+            </div>
+            <div>
+              <h2>10人以下 · 精品小班授课</h2>
+              <p>每个孩子都能被看见、被回应、被引导</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ 02 TEAM ══════════════════ -->
+      <section class="section" id="about">
+        <div class="container grid12">
+          <div class="about__label rv">
+            <div class="section__meta">
+              <span class="num">02</span>
+              <span class="label">Team</span>
+            </div>
+            <h2 class="section__title">导师团队</h2>
+            <span class="about__eyebrow">Near-peer mentors</span>
+          </div>
+          <div class="about__body rv">
+            <div class="about__story">
+              <p>
+                <span class="about__copy"
+                  >孩子身边不缺告诉他“应该怎么做”的大人。</span
+                >
+              </p>
+              <p>
+                <span class="about__copy"
+                  >真正稀缺的，是一个离他没有那么远、<strong>足够优秀</strong>，又愿意<strong>认真听他说话</strong>的年轻榜样。</span
+                >
+              </p>
+              <p>
+                <span class="about__copy"
+                  >我们的导师大多处于<strong>20–30岁</strong>之间。他们刚刚走过孩子即将面对的升学选择、自我怀疑、人际关系、兴趣探索与成长转折。</span
+                >
+              </p>
+              <p>
+                <span class="about__copy"
+                  >他们理解<strong>AI时代10后青少年</strong>的语言和处境，也能把自己亲身验证过的思考方式、选择方法和成长经验，转化为孩子听得懂、愿意尝试的方法。</span
+                >
+              </p>
+              <p>
+                <span class="about__copy"
+                  >我们不会站在讲台上生硬填鸭，而是<strong>坐在孩子身边，陪他把问题想明白</strong>。</span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="about__kicker rv">
+            <p class="about__belief">
+              我们相信：<span>优秀的思维方式，可以被传承。</span>
+            </p>
+            <p class="about__belief about__belief--vision">
+              我们希望孩子提前看见：<span>你在未来可以成为怎样的人。</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ 03 FACULTY ══════════════════ -->
+      <section class="section" id="faculty">
+        <div class="container">
+          <div class="section__head rv">
+            <div class="section__meta">
+              <span class="num">03</span>
+              <span class="label">Faculty</span>
+            </div>
+            <h2 class="section__title">你的孩子将和这样的人一起成长</h2>
+          </div>
+
+          <div class="faculty__positioning rv">
+            <p class="faculty__lead">
+              他们不只是拥有亮眼学历和成绩的人，而是拥有<strong>学术深度、真实实践、开放视野、积极爱好与完整人格</strong>的多元型青年，拥有跨领域学习、表达、创造和行动的能力。
+            </p>
+            <p class="faculty__slogan">
+              每个人在成年后要面对的，都是复杂纷繁的世界，从来不是一张只有标准答案的试卷。
+            </p>
+          </div>
+
+          <div
+            class="faculty__standards rv"
+            aria-labelledby="faculty-standards-title"
+          >
+            <div class="faculty__standards-head">
+              <h3 class="faculty__standards-title" id="faculty-standards-title">
+                导师遴选标准
+              </h3>
+              <p class="faculty__ratio">导师录取比例<strong>1:42</strong></p>
+            </div>
+            <ol class="faculty__criteria">
+              <li>
+                <span class="faculty__criteria-num">01</span>
+                <p>扎实的学术与专业能力</p>
+              </li>
+              <li>
+                <span class="faculty__criteria-num">02</span>
+                <p>至少一项真实世界实践经历</p>
+              </li>
+              <li>
+                <span class="faculty__criteria-num">03</span>
+                <p>清晰的表达与深度倾听能力</p>
+              </li>
+              <li>
+                <span class="faculty__criteria-num">04</span>
+                <p>对青少年成长的理解与耐心</p>
+              </li>
+              <li>
+                <span class="faculty__criteria-num">05</span>
+                <p>开放、多元且值得信任的价值观</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="roll" aria-label="导师团（自动轮播，悬停暂停）">
+            <div class="roll__track">
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/01 韩瑜.jpg"
+                  alt="韩瑜 HAN YU，北京创域认知创始人 / CEO"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—01 韩瑜 HAN YU</h3>
+                  <p>北京创域认知创始人 / CEO</p>
+                  <ul>
+                    <li>清华大学设计本科、硕士</li>
+                    <li>国家奖学金连续获得者</li>
+                    <li>清华大学启创计划成员</li>
+                    <li>AI 应用创业者、研究者</li>
+                    <li>自我博雅教育践行者</li>
+                  </ul>
+                  <p>以认知创造价值，用设计改变未来。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/03 王梓豪.jpg"
+                  alt="王梓豪 OWEN WANG，哈佛大学教育学院硕士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—02 王梓豪 OWEN WANG</h3>
+                  <p>哈佛大学教育学院硕士</p>
+                  <ul>
+                    <li>人类发展与教育研究者</li>
+                    <li>贝茨学院心理与教育双学位</li>
+                    <li>贝茨学院招生办公室大使</li>
+                    <li>爵士乐团首席鼓手</li>
+                    <li>Adverse childhood experience 研究者</li>
+                  </ul>
+                  <p>以教育理解成长，以研究探索人性。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/06 李策.jpg"
+                  alt="李策 LI CE，清华大学设计博士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—03 李策 LI CE</h3>
+                  <p>清华大学设计博士</p>
+                  <ul>
+                    <li>宾夕法尼亚大学硕士</li>
+                    <li>前大厂事业部总经理</li>
+                    <li>曾任宾夕法尼亚大学、武汉大学兼职讲师</li>
+                    <li>AI 教育研究者</li>
+                    <li>
+                      出版著作《AIGC 生成式人工智能设计概论》《Midjourney
+                      人工智能创意设计》（十四五部委级规划教材）
+                    </li>
+                  </ul>
+                  <p>以设计连接技术与教育，以 AI 拓展创造边界。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/02 沈子维.jpg"
+                  alt="沈子维 SHEN ZIWEI，北京大学心理学系博士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—04 沈子维 SHEN ZIWEI</h3>
+                  <p>北京大学心理学系博士</p>
+                  <ul>
+                    <li>中国人民大学金融 + 组织管理双学位</li>
+                    <li>人机情绪、情感计算前沿研究者</li>
+                    <li>发表多篇 SCI 论文</li>
+                    <li>博雅教育践行者</li>
+                  </ul>
+                  <p>以心理洞察理解人性，以科研方法推动创新。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/04 李玥祺.jpg"
+                  alt="李玥祺 LI YUEQI，北京大学物理学博士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—05 李玥祺 LI YUEQI</h3>
+                  <p>北京大学物理学博士</p>
+                  <ul>
+                    <li>免疫动力学领域研究者、AI4S 研究者</li>
+                    <li>创新实践平台负责人</li>
+                    <li>大学生物理竞赛全国一等奖</li>
+                    <li>摄影博主</li>
+                    <li>摇滚乐队主唱</li>
+                    <li>北大电音节主办委员会</li>
+                  </ul>
+                  <p>在探索自然的路上，也在定义自己的节奏。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/05 刘童.jpg"
+                  alt="刘童 LIU TONG，清华大学车辆学院硕士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—06 刘童 LIU TONG</h3>
+                  <p>清华大学车辆学院硕士</p>
+                  <ul>
+                    <li>清华大学 2025 学生年度人物</li>
+                    <li>连续 3 年获国家奖学金</li>
+                    <li>北京市优秀毕业生</li>
+                    <li>累计撰写发表 15 篇论文、39 项专利</li>
+                    <li>获竞赛奖国家级 11 项、省级 13 项</li>
+                    <li>曾任校学生组织主席、清华辅导员</li>
+                    <li>中国国家地理签约摄影师</li>
+                  </ul>
+                  <p>以热爱驱动探索，以责任定义成长。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/09 郝悦翔.jpg"
+                  alt="郝悦翔 GABRIEL HAO，芝加哥大学社会科学硕士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—07 郝悦翔 GABRIEL HAO</h3>
+                  <p>芝加哥大学社会科学硕士</p>
+                  <ul>
+                    <li>文化史交叉学科研究</li>
+                    <li>Midway Research Fellowship 获得者</li>
+                    <li>博雅教育实践者</li>
+                  </ul>
+                  <p>以人文理解时代，以研究连接文化。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/07 郭俊熙.jpg"
+                  alt="郭俊熙 GUO JUNXI，清华大学本科、硕士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—08 郭俊熙 GUO JUNXI</h3>
+                  <p>清华大学本科、硕士</p>
+                  <ul>
+                    <li>计算机视觉研究者</li>
+                    <li>全网 20w+ 粉丝的教育创业者</li>
+                    <li>高考总分 699</li>
+                  </ul>
+                  <p>以技术洞察世界，以教育影响更多人。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/10 朱培荣.jpg"
+                  alt="朱培荣 ZHU PEIRONG，清华大学自动化本科"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—09 朱培荣 ZHU PEIRONG</h3>
+                  <p>清华大学自动化本科</p>
+                  <ul>
+                    <li>清华大学学业发展中心高数、线代辅导讲师</li>
+                    <li>多次赴贫困地区支教授课</li>
+                    <li>高考总分 704</li>
+                    <li>电子琴十级的音乐爱好者</li>
+                  </ul>
+                  <p>以理性钻研技术，以热忱传递教育力量。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/11 姜瑞欣.jpg"
+                  alt="姜瑞欣 ESTHER JIANG，清华大学经管学院本科"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—10 姜瑞欣 ESTHER JIANG</h3>
+                  <p>清华大学经管学院本科</p>
+                  <ul>
+                    <li>一级市场投资和战略咨询</li>
+                    <li>创业项目入选清华大学 X-lab</li>
+                    <li>博雅教育探索者</li>
+                  </ul>
+                  <p>以理性洞察商业机会，以长期主义探索成长可能。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/08 李莹然.jpg"
+                  alt="李莹然 Amanda Li，家庭理财规划师"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—11 李莹然 Amanda Li</h3>
+                  <p>家庭理财规划师</p>
+                  <ul>
+                    <li>美国宾夕法尼亚州立大学金融学学士</li>
+                    <li>香港大学可持续会计与金融硕士</li>
+                    <li>天开高教科创园副主任委员</li>
+                    <li>HKUNAA（香港大学北美发展协会）创始人</li>
+                    <li>ISEA（北美留学生发展联合会）现任顾问委员</li>
+                  </ul>
+                  <p>以专业规划守护家庭财富，以全球视野连接未来机会。</p>
+                </div>
+              </article>
+              <article class="mentor">
+                <img
+                  class="mentor__poster"
+                  src="img/12 姚知言.png"
+                  alt="姚知言 YAO ZHIYAN，达特茅斯学院机械工程本科、硕士"
+                  loading="lazy"
+                />
+                <div class="sr">
+                  <h3>导师—12 姚知言 YAO ZHIYAN</h3>
+                  <p>达特茅斯学院机械工程本科、硕士</p>
+                  <ul>
+                    <li>NASA 深空火箭项目工程师</li>
+                    <li>Meta 开发者平台工程师</li>
+                    <li>航天电子与智能系统研发经历</li>
+                    <li>AI 平台与数字基础设施建设经验</li>
+                    <li>跨硬件、软件与人工智能的复合型工程背景</li>
+                  </ul>
+                  <p>以工程连接现实，以系统驱动未来。</p>
+                </div>
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/01 韩瑜.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/03 王梓豪.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/06 李策.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/02 沈子维.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/04 李玥祺.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/05 刘童.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/09 郝悦翔.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/07 郭俊熙.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/10 朱培荣.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/11 姜瑞欣.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/08 李莹然.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+              <article class="mentor" aria-hidden="true">
+                <img
+                  class="mentor__poster"
+                  src="img/12 姚知言.png"
+                  alt=""
+                  loading="lazy"
+                />
+              </article>
+            </div>
+          </div>
+          <p class="roll__hint label">悬停暂停</p>
+        </div>
+      </section>
+
+      <!-- ══════════════════ 04 CURRICULUM ══════════════════ -->
+      <section class="section" id="curriculum">
+        <div class="container">
+          <div class="section__head rv">
+            <div class="section__meta">
+              <span class="num">04</span>
+              <span class="label">Curriculum</span>
+            </div>
+            <h2 class="section__title">课程规划</h2>
+            <p class="section__sub">一套完整的思维认知成长体系。</p>
+          </div>
+
+          <div class="spec rv" aria-label="课程数据">
+            <div><b data-count="5">5</b><span>大模块</span></div>
+            <div><b data-count="76">76</b><span>节课</span></div>
+            <div><b data-count="60 - 90">60 - 90</b><span>分钟 / 节</span></div>
+          </div>
+
+          <section class="quality rv" aria-labelledby="quality-title">
+            <h3 class="quality__title" id="quality-title">课程质量保障</h3>
+            <ol class="quality__steps">
+              <li class="quality__step">
+                <span class="quality__num">01</span>
+                <p>试讲与培训流程</p>
+              </li>
+              <li class="quality__step">
+                <span class="quality__num">02</span>
+                <p>统一课程框架</p>
+              </li>
+              <li class="quality__step">
+                <span class="quality__num">03</span>
+                <p>教研审核机制</p>
+              </li>
+              <li class="quality__step">
+                <span class="quality__num">04</span>
+                <p>课堂反馈与复盘机制</p>
+              </li>
+            </ol>
+          </section>
+
+          <div class="mods">
+            <article class="mod rv">
+              <div class="mod__intro">
+                <div class="mod__top"><span class="num">模块—01</span></div>
+                <h3 class="mod__name">
+                  <span class="mod__name-line">认识和</span
+                  ><span class="mod__name-line">规划自我</span>
+                </h3>
+                <p class="mod__claim">学会像了解一台精密仪器一样了解自己。</p>
+                <p class="mod__catalog-note">
+                  Selected curriculum · 部分课程展示
+                </p>
+              </div>
+              <div>
+                <ul class="mod__qs">
+                  <li>认识自己 · 元认知</li>
+                  <li>认识自己的盲区 · 思维习惯</li>
+                  <li>认识自己的情绪 · PBT思考法</li>
+                  <li>认识自己的“不理性” · 认知偏差</li>
+                  <li>认识自己的注意力 · 集中精力5步法</li>
+                  <li>认识自己的压力 · 化压力为动力</li>
+                  <li class="mod__more-row" aria-label="更多课程">
+                    <span>……</span>
+                  </li>
+                </ul>
+                <div class="mod__gain">
+                  <span class="label">孩子会收获</span>
+                  <p>更稳定的情绪，更清晰的自我认知，面对困难时的韧性。</p>
+                </div>
+                <div class="mod__actions">
+                  <p class="mod__more">
+                    以上仅展示部分课程，完整课程内容请联系咨询。
+                  </p>
+                  <a class="mod__consult" href="#contact"
+                    >咨询详情 <span>→</span></a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="mod rv">
+              <div class="mod__intro">
+                <div class="mod__top"><span class="num">模块—02</span></div>
+                <h3 class="mod__name">
+                  <span class="mod__name-line">逻辑和</span
+                  ><span class="mod__name-line">辩证思维</span>
+                </h3>
+                <p class="mod__claim">学会一眼看穿事物的底层逻辑。</p>
+                <p class="mod__catalog-note">
+                  Selected curriculum · 部分课程展示
+                </p>
+              </div>
+              <div>
+                <ul class="mod__qs">
+                  <li>逻辑的形式1 · 演绎推理</li>
+                  <li>逻辑的形式2 · 归纳推理</li>
+                  <li>辩证思维1 · 数据素养</li>
+                  <li>辩证思维2 · 叙事证据</li>
+                  <li>辩证思维3 · 第一性原理</li>
+                  <li>辩证思维4 · 多维检验</li>
+                  <li class="mod__more-row" aria-label="更多课程">
+                    <span>……</span>
+                  </li>
+                </ul>
+                <div class="mod__gain">
+                  <span class="label">孩子会收获</span>
+                  <p>结构化思考能力，辨别信息真伪的眼光，独立判断的底气。</p>
+                </div>
+                <div class="mod__actions">
+                  <p class="mod__more">
+                    以上仅展示部分课程，完整课程内容请联系咨询。
+                  </p>
+                  <a class="mod__consult" href="#contact"
+                    >咨询详情 <span>→</span></a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="mod rv">
+              <div class="mod__intro">
+                <div class="mod__top"><span class="num">模块—03</span></div>
+                <h3 class="mod__name">
+                  <span class="mod__name-line">创新和</span
+                  ><span class="mod__name-line">创造思维</span>
+                </h3>
+                <p class="mod__claim">学会像发明家一样产生好想法。</p>
+                <p class="mod__catalog-note">
+                  Selected curriculum · 部分课程展示
+                </p>
+              </div>
+              <div>
+                <ul class="mod__qs">
+                  <li>创意的逆向思考 · 打破思维定势</li>
+                  <li>创意卡壳先行动 · 原型思维</li>
+                  <li>创新方案的表述 · “英雄之旅”叙事</li>
+                  <li>创新方案的生成 · 定义和解决问题</li>
+                  <li>创新方案的落实 · 清晰和量化行动</li>
+                  <li>创新方案中的障碍 · 问题拆解并解决</li>
+                  <li class="mod__more-row" aria-label="更多课程">
+                    <span>……</span>
+                  </li>
+                </ul>
+                <div class="mod__gain">
+                  <span class="label">孩子会收获</span>
+                  <p>不再怕「没有灵感」，掌握一套可以反复使用的创意方法论。</p>
+                </div>
+                <div class="mod__actions">
+                  <p class="mod__more">
+                    以上仅展示部分课程，完整课程内容请联系咨询。
+                  </p>
+                  <a class="mod__consult" href="#contact"
+                    >咨询详情 <span>→</span></a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="mod rv">
+              <div class="mod__intro">
+                <div class="mod__top"><span class="num">模块—04</span></div>
+                <h3 class="mod__name">
+                  <span class="mod__name-line">沟通、表达</span
+                  ><span class="mod__name-line">和协作</span>
+                </h3>
+                <p class="mod__claim">学会在人群中发出有影响力的声音。</p>
+                <p class="mod__catalog-note">
+                  Selected curriculum · 部分课程展示
+                </p>
+              </div>
+              <div>
+                <ul class="mod__qs">
+                  <li>沟通中的有效性 · 非暴力沟通</li>
+                  <li>表达的背后 · 深度倾听他人</li>
+                  <li>表达的方法 · 高情商表达</li>
+                  <li>跨代际沟通与表达 · 理解长辈</li>
+                  <li>沟通、表达与协作1 · 四种沟通风格</li>
+                  <li>沟通、表达与协作2 · 化冲突为合作</li>
+                  <li class="mod__more-row" aria-label="更多课程">
+                    <span>……</span>
+                  </li>
+                </ul>
+                <div class="mod__gain">
+                  <span class="label">孩子会收获</span>
+                  <p>清晰的表达力，高情商的沟通方式，团队协作中的领导力。</p>
+                </div>
+                <div class="mod__actions">
+                  <p class="mod__more">
+                    以上仅展示部分课程，完整课程内容请联系咨询。
+                  </p>
+                  <a class="mod__consult" href="#contact"
+                    >咨询详情 <span>→</span></a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="mod rv">
+              <div class="mod__intro">
+                <div class="mod__top">
+                  <span class="num">模块—05</span>
+                  <span class="badge">New</span>
+                </div>
+                <h3 class="mod__name">
+                  <span class="mod__name-line">AI 时代的</span
+                  ><span class="mod__name-line">人机素养</span>
+                </h3>
+                <p class="mod__claim">学会面向未来的核心能力。</p>
+                <p class="mod__catalog-note">
+                  Selected curriculum · 部分课程展示
+                </p>
+              </div>
+              <div>
+                <ul class="mod__qs">
+                  <li>AI与创造力 · SPAIR五步法</li>
+                  <li>AI与决策能力 · OPA三步法</li>
+                  <li>AI与学习方式 · 三种学习法</li>
+                  <li>AI与个人隐私 · 信息分层</li>
+                  <li>AI与责任 · 三条底线</li>
+                  <li>AI与职业演变 · 分析梦想职业</li>
+                  <li class="mod__more-row" aria-label="更多课程">
+                    <span>……</span>
+                  </li>
+                </ul>
+                <div class="mod__gain">
+                  <span class="label">孩子会收获</span>
+                  <p>
+                    对 AI
+                    的深度理解，人机协作的实战能力，面对未来不确定性的自信。
+                  </p>
+                </div>
+                <div class="mod__actions">
+                  <p class="mod__more">
+                    以上仅展示部分课程，完整课程内容请联系咨询。
+                  </p>
+                  <a class="mod__consult" href="#contact"
+                    >咨询详情 <span>→</span></a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ 05 OUTCOMES ══════════════════ -->
+      <section class="section" id="outcomes">
+        <div class="container">
+          <div class="section__head rv">
+            <div class="section__meta">
+              <span class="num">05</span>
+              <span class="label">Outcomes</span>
+            </div>
+            <h2 class="section__title">学完之后，你会看到这些变化</h2>
+            <p class="outcomes__intro">作用在日常生活中的真实改变。</p>
+          </div>
+          <div class="outcomes">
+            <article class="outcome rv">
+              <figure class="outcome__visual">
+                <span class="outcome__index">01</span>
+                <img
+                  src="img/课程01-认识和规划自我.png"
+                  alt="认识和规划自我课程视觉"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="outcome__body">
+                <span class="outcome__eyebrow">面对困难</span>
+                <h3 class="outcome__title">遇到困难，不再第一时间说“我不会”</h3>
+                <div class="outcome__compare">
+                  <div class="outcome__state">
+                    <span class="outcome__label">学习前</span>
+                    <p>一遇到难题就说「我不会」，害怕犯错，也容易放弃</p>
+                  </div>
+                  <span class="outcome__arrow" aria-hidden="true">→</span>
+                  <div class="outcome__state outcome__state--after">
+                    <span class="outcome__label">学习后</span>
+                    <p>先说「我来想想看」，能够稳定情绪并尝试新的方法</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="outcome rv">
+              <figure class="outcome__visual">
+                <span class="outcome__index">02</span>
+                <img
+                  src="img/课程02-逻辑与辩证思维.png"
+                  alt="逻辑与辩证思维课程视觉"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="outcome__body">
+                <span class="outcome__eyebrow">分析判断</span>
+                <h3 class="outcome__title">
+                  能解释自己的观点，而不是只说“我觉得”
+                </h3>
+                <div class="outcome__compare">
+                  <div class="outcome__state">
+                    <span class="outcome__label">学习前</span>
+                    <p>面对复杂问题没有头绪，容易被片面信息和他人观点带着走</p>
+                  </div>
+                  <span class="outcome__arrow" aria-hidden="true">→</span>
+                  <div class="outcome__state outcome__state--after">
+                    <span class="outcome__label">学习后</span>
+                    <p>会把问题拆成步骤，也能清楚说明自己为什么赞同或反对</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="outcome rv">
+              <figure class="outcome__visual">
+                <span class="outcome__index">03</span>
+                <img
+                  src="img/课程03-创新和创造思维.png"
+                  alt="创新和创造思维课程视觉"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="outcome__body">
+                <span class="outcome__eyebrow">探索创造</span>
+                <h3 class="outcome__title">面对选择，开始知道如何分析和判断</h3>
+                <div class="outcome__compare">
+                  <div class="outcome__state">
+                    <span class="outcome__label">学习前</span>
+                    <p>习惯寻找唯一标准答案，常说「我想不到」或「没有灵感」</p>
+                  </div>
+                  <span class="outcome__arrow" aria-hidden="true">→</span>
+                  <div class="outcome__state outcome__state--after">
+                    <span class="outcome__label">学习后</span>
+                    <p>主动追问「还有别的可能吗」，并把灵感变成可执行的方案</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="outcome rv">
+              <figure class="outcome__visual">
+                <span class="outcome__index">04</span>
+                <img
+                  src="img/课程04-沟通表达和协作.png"
+                  alt="沟通表达和协作课程视觉"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="outcome__body">
+                <span class="outcome__eyebrow">沟通协作</span>
+                <h3 class="outcome__title">
+                  与同伴发生分歧时，能够先倾听再表达
+                </h3>
+                <div class="outcome__compare">
+                  <div class="outcome__state">
+                    <span class="outcome__label">学习前</span>
+                    <p>意见不合时急于反驳，想法很多，却难以清楚地说给别人听</p>
+                  </div>
+                  <span class="outcome__arrow" aria-hidden="true">→</span>
+                  <div class="outcome__state outcome__state--after">
+                    <span class="outcome__label">学习后</span>
+                    <p>
+                      能听懂对方真正的意思，再有依据、有分寸地表达自己的观点
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="outcome rv">
+              <figure class="outcome__visual">
+                <span class="outcome__index">05</span>
+                <img
+                  src="img/课程05-AI时代的人机素养.png"
+                  alt="AI时代人机素养课程视觉"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="outcome__body">
+                <span class="outcome__eyebrow">AI 素养</span>
+                <h3 class="outcome__title">
+                  使用AI时，不只是复制答案，而是主动追问和验证
+                </h3>
+                <div class="outcome__compare">
+                  <div class="outcome__state">
+                    <span class="outcome__label">学习前</span>
+                    <p>
+                      把 AI 当作搜索框或作业代写工具，不知道怎样判断回答是否可靠
+                    </p>
+                  </div>
+                  <span class="outcome__arrow" aria-hidden="true">→</span>
+                  <div class="outcome__state outcome__state--after">
+                    <span class="outcome__label">学习后</span>
+                    <p>
+                      会提出高质量问题、核验结果，让 AI 真正成为学习与创造的助手
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="outcomes__closing rv">
+            <span>我们希望看到</span>
+            <strong>一个更有主见、更会思考、也更愿意行动的孩子。</strong>
+            <em class="outcomes__promise"
+              >让孩子和他愿意成为的人，一起成长。</em
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════════════ 06 CONTACT ══════════════════ -->
+      <section class="section contact" id="contact">
+        <div class="container grid12">
+          <div class="contact__l rv">
+            <div class="section__meta">
+              <span class="num">06</span>
+              <span class="label">Contact</span>
+            </div>
+            <h2 class="section__title">和清北藤校导师团聊一次</h2>
+            <p class="section__sub">看看你的孩子适合哪个成长方向。</p>
+            <div class="opts">
+              <a href="#contact">预约体验课 <span class="arw">→</span></a>
+              <a href="#contact"
+                >学校 / 机构合作洽谈 <span class="arw">→</span></a
+              >
+              <a href="#contact">深度教育咨询 <span class="arw">→</span></a>
+            </div>
+          </div>
+          <div class="contact__r rv">
+            <table class="info">
+              <tbody>
+                <tr>
+                  <th scope="row">微信</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">邮箱</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">电话</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">公众号</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">公司全称</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">地址</th>
+                  <td><span class="badge badge--tbd">待填</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════════════ 08 FOOTER ══════════════════ -->
+    <footer class="foot">
+      <div class="container foot__in">
+        <p>和最优秀的年轻大脑一起，学会真正的思考。</p>
+        <small>© 2026 [公司名称] 版权所有</small>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        // 视觉顺序：01 居中；02/03 分居左右，再按编号向两侧展开。
+        var centeredOrder = [12, 10, 8, 6, 4, 2, 1, 3, 5, 7, 9, 11];
+        function posterNumber(node) {
+          var img = node.querySelector("img");
+          var match = img && decodeURIComponent(img.src).match(/\/(\d{2})\s/);
+          return match ? parseInt(match[1], 10) : 999;
+        }
+        function applyCenteredOrder(parent, selector) {
+          if (!parent) return;
+          var nodes = [].slice.call(parent.querySelectorAll(selector));
+          var originals = nodes.filter(function (node) {
+            return node.getAttribute("aria-hidden") !== "true";
+          });
+          var clones = nodes.filter(function (node) {
+            return node.getAttribute("aria-hidden") === "true";
+          });
+          function sortGroup(group) {
+            return group.sort(function (a, b) {
+              return (
+                centeredOrder.indexOf(posterNumber(a)) -
+                centeredOrder.indexOf(posterNumber(b))
+              );
+            });
+          }
+          sortGroup(originals)
+            .concat(sortGroup(clones))
+            .forEach(function (node) {
+              parent.appendChild(node);
+            });
+        }
+
+        /* ---------- 首屏弧列：无限漂移 + 位置驱动的内凹曲面 ---------- */
+        var fan = document.getElementById("fan");
+        if (fan) {
+          applyCenteredOrder(fan.querySelector(".fan__row"), ".fan__card");
+          var fcards = [].slice.call(fan.querySelectorAll(".fan__card"));
+          var centerIndex = fcards.findIndex(function (card) {
+            return (
+              card.getAttribute("aria-hidden") !== "true" &&
+              posterNumber(card) === 1
+            );
+          });
+          if (centerIndex < 0) centerIndex = 0;
+          // 中央小而低、两侧大而高：缩放与纵向位移共同形成参考图中的凹弧。
+          var GAP = 12,
+            MAXROT = 24,
+            DEPTH = 90,
+            CURVE = 104;
+          var MIN_SCALE = 0.74,
+            MAX_SCALE = 1.12,
+            SPEED = 18; // px/秒
+          var CARDW = 210;
+          function readW() {
+            var v = parseFloat(
+              getComputedStyle(fan).getPropertyValue("--fanw"),
+            );
+            if (v > 0) CARDW = v;
+          }
+          readW();
+          var mq = window.matchMedia("(prefers-reduced-motion:reduce)");
+          var off = 0,
+            prev = 0,
+            rafId = null,
+            hold = false,
+            onScreen = true;
+          function center01() {
+            var step = CARDW * 0.82 + GAP;
+            var total = fcards.length * step;
+            off = centerIndex * step - (total - CARDW) / 2;
+          }
+          center01();
+
+          // 纯算术算位置，不在动画循环中读取 DOM，避免每帧触发重排。
+          function place() {
+            var W = fan.clientWidth,
+              STEP = CARDW * 0.82 + GAP;
+            var TOTAL = fcards.length * STEP,
+              half = W / 2,
+              lead = (TOTAL - W) / 2;
+            for (var i = 0; i < fcards.length; i++) {
+              var p = (((i * STEP - off) % TOTAL) + TOTAL) % TOTAL;
+              var x = p - lead;
+              var t = (x + CARDW / 2 - half) / (half * 0.94);
+              t = t < -1 ? -1 : t > 1 ? 1 : t;
+              var edge = Math.abs(t),
+                curve = Math.pow(edge, 1.55);
+              var scale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * curve;
+              var y = CURVE * (1 - curve);
+              var opacity = 0.42 + 0.58 * (1 - Math.pow(edge, 2.2));
+              fcards[i].style.transform =
+                "translate3d(" +
+                x.toFixed(1) +
+                "px," +
+                y.toFixed(1) +
+                "px," +
+                (-edge * DEPTH).toFixed(1) +
+                "px)" +
+                " rotateY(" +
+                (-t * MAXROT).toFixed(2) +
+                "deg)" +
+                " scale(" +
+                scale.toFixed(3) +
+                ")";
+              fcards[i].style.opacity = opacity.toFixed(3);
+              fcards[i].style.zIndex = String(100 - Math.round(edge * 20));
+            }
+          }
+          function tick(now) {
+            if (!prev) prev = now;
+            if (!hold) off += (SPEED * (now - prev)) / 1000;
+            prev = now;
+            place();
+            rafId = requestAnimationFrame(tick);
+          }
+          function run() {
+            if (!rafId) {
+              prev = 0;
+              rafId = requestAnimationFrame(tick);
+            }
+          }
+          function halt() {
+            if (rafId) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
+
+          function sync() {
+            if (mq.matches || window.innerWidth < 768) {
+              halt();
+              fan.classList.add("fan--static");
+              fcards.forEach(function (c) {
+                c.style.transform = "";
+                c.style.opacity = "";
+                c.style.zIndex = "";
+              });
+              var centerCard = fcards[centerIndex];
+              if (centerCard) {
+                fan.scrollLeft =
+                  centerCard.offsetLeft -
+                  (fan.clientWidth - centerCard.offsetWidth) / 2;
+              }
+            } else {
+              fan.classList.remove("fan--static");
+              if (onScreen) run();
+              else place();
+            }
+          }
+          fan.addEventListener("mouseenter", function () {
+            hold = true;
+          });
+          fan.addEventListener("mouseleave", function () {
+            hold = false;
+          });
+          window.addEventListener("resize", function () {
+            readW();
+            center01();
+            sync();
+          });
+          if (mq.addEventListener) mq.addEventListener("change", sync);
+
+          // 滚出视口就停掉 rAF，没必要一直烧 CPU
+          if ("IntersectionObserver" in window) {
+            new IntersectionObserver(function (en) {
+              onScreen = en[0].isIntersecting;
+              sync();
+            }).observe(fan);
+          }
+          sync();
+        }
+
+        /* ---------- 下方导师轮播使用同一套中心顺序 ---------- */
+        var rollTrack = document.querySelector(".roll__track");
+        var roll = rollTrack && rollTrack.closest(".roll");
+        applyCenteredOrder(rollTrack, ".mentor");
+        if (roll) {
+          if ("IntersectionObserver" in window) {
+            new IntersectionObserver(
+              function (entries) {
+                roll.classList.toggle("is-visible", entries[0].isIntersecting);
+              },
+              { threshold: 0.12 },
+            ).observe(roll);
+          } else {
+            roll.classList.add("is-visible");
+          }
+        }
+
+        /* ---------- 课程数据：进入视口时克制地计数一次 ---------- */
+        var spec = document.querySelector(".spec");
+        var countEls = spec
+          ? [].slice.call(spec.querySelectorAll("[data-count]"))
+          : [];
+        var reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion:reduce)",
+        ).matches;
+        function runCounts() {
+          countEls.forEach(function (el, index) {
+            var raw = el.getAttribute("data-count");
+            if (!/^\d+$/.test(raw)) {
+              el.textContent = raw;
+              return;
+            }
+            var target = parseInt(raw, 10);
+            if (reduceMotion || !target) {
+              el.textContent = target;
+              return;
+            }
+            var start = null;
+            var duration = 720 + index * 120;
+            el.textContent = "0";
+            function frame(now) {
+              if (!start) start = now;
+              var t = Math.min(1, (now - start) / duration);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.round(target * eased);
+              if (t < 1) requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+          });
+        }
+        if (spec && "IntersectionObserver" in window) {
+          var specObserver = new IntersectionObserver(
+            function (entries) {
+              if (!entries[0].isIntersecting) return;
+              runCounts();
+              specObserver.disconnect();
+            },
+            { threshold: 0.35 },
+          );
+          specObserver.observe(spec);
+        } else if (spec) {
+          runCounts();
+        }
+
+        /* ---------- 进场动效 ---------- */
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in");
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { rootMargin: "0px 0px -10% 0px" },
+          );
+          [].forEach.call(document.querySelectorAll(".rv"), function (el) {
+            io.observe(el);
+          });
+        } else {
+          [].forEach.call(document.querySelectorAll(".rv"), function (el) {
+            el.classList.add("in");
+          });
+        }
+
+        /* ---------- 顶栏当前段高亮 ---------- */
+        var links = [].slice.call(document.querySelectorAll(".nav__link"));
+        var secs = links.map(function (a) {
+          return document.querySelector(a.getAttribute("href"));
+        });
+        if ("IntersectionObserver" in window) {
+          var nav = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                var i = secs.indexOf(en.target);
+                links.forEach(function (a, n) {
+                  a.classList.toggle("is-active", n === i);
+                });
+              });
+            },
+            { rootMargin: "-64px 0px -70% 0px" },
+          );
+          secs.forEach(function (s) {
+            if (s) nav.observe(s);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
